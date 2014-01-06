@@ -1,0 +1,6 @@
+# The production and test Flickr token will live here.
+#
+# So we tell git to ignore everything in this directory
+*
+# Except this file
+!.gitignore
