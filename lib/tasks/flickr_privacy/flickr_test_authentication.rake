@@ -19,13 +19,9 @@ namespace :flickr_privacy do
     begin
       flickr.get_access_token(token['oauth_token'], token['oauth_token_secret'], verify)
       login = flickr.test.login
-      if args[:env] != 'test'
-        FlickrPrivacy.store_oauth(flickr.access_token, flickr.access_secret)
-        puts "stored in oauth/live.json"
-      else
-        FlickrPrivacy.store_test_oauth(flickr.access_token, flickr.access_secret)
-        puts "stored in oauth/test.json"
-      end
+      oauth = FlickrPrivacy::Oauth.new(args[:env].to_sym)
+      oauth.store(flickr.access_token, flickr.access_secret)
+      puts "stored in #{oauth.file_path}"
     rescue FlickRaw::FailedResponse => e
       puts "Authentication failed : #{e.msg}"
     end

@@ -11,8 +11,9 @@ module RspecSupport
         raise MissingFlickrTestCredentialsException unless filled_authentication_keys?
         FlickRaw.api_key = FlickrPrivacy.env_api_key
         FlickRaw.shared_secret= FlickrPrivacy.env_api_secret
-        flickr.access_token = FlickrPrivacy.test_oauth['token']
-        flickr.access_secret = FlickrPrivacy.test_oauth['secret']
+        oauth = FlickrPrivacy::Oauth.new(:test)
+        flickr.access_token = oauth.credentials['token']
+        flickr.access_secret = oauth.credentials['secret']
 
         if existing_photos?
           delete_all_photos
