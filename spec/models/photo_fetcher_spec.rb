@@ -33,9 +33,8 @@ module FlickrPrivacy
         it "should return a photo with an URL as value" do
           VCR.use_cassette('search') do
             fetcher = PhotoFetcher.new
-            photo = fetcher.next.first
-            photo_url = photo.first.last # the value of the first key
-            photo_url =~ url_regexp
+            first_photo_url = fetcher.next.first
+            first_photo_url =~ url_regexp
           end
         end
 

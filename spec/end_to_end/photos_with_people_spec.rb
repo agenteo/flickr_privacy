@@ -26,6 +26,7 @@ module FlickrPrivacy
         WebMock.allow_net_connect!
         RspecSupport::FlickrTest::clear_account
       end
+      FileUtils.rm_rf(Dir.glob(FlickrPrivacy.tmp_data_path + '*'))
     end
   end
 end

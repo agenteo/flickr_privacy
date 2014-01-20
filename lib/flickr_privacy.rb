@@ -2,6 +2,7 @@ require "flickr_privacy/version"
 require "flickr_privacy/oauth"
 require "flickr_privacy/photo_fetcher"
 require "flickr_privacy/photos_with_people"
+require "flickr_privacy/photo_downloader"
 
 module FlickrPrivacy
   API_KEY = 'FLICKR_PRIVACY_API_KEY'
@@ -38,6 +39,10 @@ module FlickrPrivacy
 
     def oauth_file_path(filename)
       File.dirname(__FILE__) + "/../oauth/#{filename}.json"
+    end
+
+    def tmp_data_path
+      File.dirname(__FILE__) + "/../tmp_data/"
     end
 
     private

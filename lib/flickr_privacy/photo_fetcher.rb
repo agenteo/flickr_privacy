@@ -8,10 +8,12 @@ module FlickrPrivacy
                       user_id: FlickrPrivacy.flickr_id,
                       page: 1,
                       per_page: MAX_ALLOWED)
-      last_fetched_raw.map do |photo|
-        url = FlickRaw.url_photopage(photo)
-        { photo['id'] => url }
+      result = {}
+      last_fetched_raw.each do |photo|
+        url = FlickRaw.url_b(photo)
+        result[ photo['id'] ] = url
       end
+      result
     end
 
   end
