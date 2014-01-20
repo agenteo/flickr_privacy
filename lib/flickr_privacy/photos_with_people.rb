@@ -2,11 +2,9 @@ module FlickrPrivacy
 
   class PhotosWithPeople
 
-    def initialize
-    end
-
     def list
-      []
+      fetcher = PhotoFetcher.new
+      fetcher.next
     end
   end
 
