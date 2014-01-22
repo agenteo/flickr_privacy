@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'flickraw'
+gem 'ruby-opencv'
 
 group :debugger do
   gem 'debugger'

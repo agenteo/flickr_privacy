@@ -3,6 +3,7 @@ require "flickr_privacy/oauth"
 require "flickr_privacy/photo_fetcher"
 require "flickr_privacy/photos_with_people"
 require "flickr_privacy/photo_downloader"
+require "flickr_privacy/photo_analizer"
 
 module FlickrPrivacy
   API_KEY = 'FLICKR_PRIVACY_API_KEY'
@@ -43,6 +44,10 @@ module FlickrPrivacy
 
     def tmp_data_path
       File.dirname(__FILE__) + "/../tmp_data/"
+    end
+
+    def haarcascades_path
+      File.dirname(__FILE__) + "/../haarcascades/"
     end
 
     private
